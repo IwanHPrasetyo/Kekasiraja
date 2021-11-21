@@ -15,7 +15,7 @@ import {
 import {colors} from '../../theme';
 import Styles from './styles';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <ScrollView
       style={Styles.container}
@@ -42,7 +42,11 @@ const Login = () => {
         <Text style={Styles.fontForgot}>Lupa Kata Sandi ?</Text>
       </View>
       <View style={Styles.viewFooter}>
-        <Pressable style={Styles.buttonLogin}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Dashboard');
+          }}
+          style={Styles.buttonLogin}>
           <Text style={Styles.fontLogin}>Login</Text>
         </Pressable>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>

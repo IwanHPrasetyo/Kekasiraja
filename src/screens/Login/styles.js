@@ -37,7 +37,7 @@ const Styles = StyleSheet.create({
   fontRegister: {
     fontSize: size.font16,
     fontFamily: 'NexaXBold',
-    color: colors.greenMain,
+    color: colors.yellowMain,
   },
   fontForgot: {
     marginTop: 10,
@@ -81,7 +81,7 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.greenMain,
+    backgroundColor: colors.yellowMain,
     height: metrics.screenHeight * 0.08,
   },
 });
