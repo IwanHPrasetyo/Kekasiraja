@@ -9,7 +9,7 @@
 import React from 'react';
 import type {Node} from 'react';
 import {Text, View} from 'react-native';
-import Pages from './src/screens/MasterProduct';
+import Pages from './src/screens/Dashboard';
 
 const App: () => Node = () => {
   return <Pages />;
