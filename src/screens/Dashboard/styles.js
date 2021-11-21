@@ -54,9 +54,17 @@ const Styles = StyleSheet.create({
   },
   fontTitle: {
     marginBottom: 5,
+    marginHorizontal: 10,
     fontSize: size.font12,
     fontFamily: 'NexaXBold',
     color: colors.fontMain,
+  },
+  fontTitle2: {
+    marginBottom: 5,
+    marginHorizontal: 10,
+    fontSize: size.font12,
+    fontFamily: 'NexaXBold',
+    color: colors.yellowMain,
   },
   fontCount: {
     marginBottom: 5,

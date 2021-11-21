@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../theme';
+import {colors, size} from '../../theme';
 
 const Styles = StyleSheet.create({
   container: {
@@ -19,6 +19,18 @@ const Styles = StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 2,
+  },
+  fontTitle: {
+    marginBottom: 5,
+    fontSize: size.font12,
+    fontFamily: 'NexaXBold',
+    color: colors.fontMain,
+  },
+  fontCount: {
+    marginBottom: 5,
+    fontSize: size.font20,
+    fontFamily: 'NexaXBold',
+    color: colors.fontMain,
   },
 });
 
