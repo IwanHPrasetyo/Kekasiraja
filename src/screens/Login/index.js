@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -12,16 +12,22 @@ import {
   Button,
   Pressable,
 } from 'react-native';
+import ModalRegister from '../../components/ModalRegister';
 import {getItem} from '../../helpers/sqlDatabase';
 import {colors} from '../../theme';
 import Styles from './styles';
 
 const Login = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <ScrollView
       style={Styles.container}
       contentInsetAdjustmentBehavior="automatic">
       <View style={Styles.viewHeader}>
+        <ModalRegister
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
         <Image
           style={Styles.imageLogin}
           source={require('../../assets/images/cashier.jpg')}
@@ -52,7 +58,11 @@ const Login = ({navigation}) => {
         </Pressable>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
           <Text style={Styles.fontRegister}>Anda belum punya akun ? </Text>
-          <Text style={Styles.fontRegister2}>Daftar Disini</Text>
+          <Text
+            onPress={() => setModalVisible(!modalVisible)}
+            style={Styles.fontRegister2}>
+            Daftar Disini
+          </Text>
         </View>
       </View>
     </ScrollView>
