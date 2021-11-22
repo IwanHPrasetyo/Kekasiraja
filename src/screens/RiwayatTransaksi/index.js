@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ScrollView, Text, TextInput, View} from 'react-native';
 import {icon} from '../../theme';
 import ListPesanan from '../../components/ListPesanan';
 import Styles from './styles';
+import ModalPesanan from '../../components/ModalPesanan';
 
 const RiwayatTransaksi = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={Styles.container}>
+      <ModalPesanan
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
       <View style={Styles.viewHeader}>
         <View
           style={{
@@ -39,13 +45,13 @@ const RiwayatTransaksi = ({navigation}) => {
       </View>
       <View style={{flex: 9}}>
         <ScrollView>
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
         </ScrollView>
       </View>
     </View>
