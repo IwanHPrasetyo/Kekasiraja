@@ -12,7 +12,7 @@ const Styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
-    height: '60%',
+    height: metrics.screenHeight * 0.5,
     width: '90%',
     shadowColor: '#000',
     shadowOffset: {
