@@ -23,6 +23,7 @@ const DaftarProduct = ({navigation}) => {
         <View
           style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
           <icon.Feather
+            onPress={() => navigation.navigate('Cart')}
             style={{fontSize: 30, color: '#fff'}}
             name="shopping-cart"
           />

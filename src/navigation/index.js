@@ -9,6 +9,7 @@ import DashboardScreen from '../screens/Dashboard';
 import MasterProductScreen from '../screens/MasterProduct';
 import RiwayatTransaksiScreen from '../screens/RiwayatTransaksi';
 import DaftarProductScreen from '../screens/DaftarProduct';
+import CartScreen from '../screens/Cart';
 
 const MainStack = createNativeStackNavigator();
 const SubStack = createNativeStackNavigator();
@@ -55,6 +56,7 @@ const MainStackScreen = () => {
       <SubStack.Screen name="MainTab" component={TabMain} />
       <SubStack.Screen name="MasterProduct" component={MasterProductScreen} />
       <SubStack.Screen name="DaftarProduct" component={DaftarProductScreen} />
+      <SubStack.Screen name="Cart" component={CartScreen} />
     </SubStack.Navigator>
   );
 };

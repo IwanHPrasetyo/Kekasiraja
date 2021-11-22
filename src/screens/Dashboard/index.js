@@ -67,7 +67,7 @@ const Dashboard = ({navigation}) => {
         </Pressable>
       </View>
       <View style={Styles.viewFooter}>
-        <Text style={Styles.fontTitle}>Pesanan Dalam Proses</Text>
+        <Text style={Styles.fontTitle}>Pesanan Terbaru</Text>
         <ScrollView>
           <ListPesanan setModalVisible={setModalVisible} />
           <ListPesanan setModalVisible={setModalVisible} />
