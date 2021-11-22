@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   TextInput,
+  ToastAndroid,
 } from 'react-native';
 import {Formik} from 'formik';
 import {colors, icon} from '../../theme';
@@ -18,9 +19,10 @@ const ModalRegister = ({modalVisible, setModalVisible}) => {
     registerUser(value)
       .then(() => {
         setModalVisible(!modalVisible);
+        ToastAndroid.show('registrasi berhasil', ToastAndroid.SHORT);
       })
       .catch(err => {
-        console.log('gagal daftar');
+        ToastAndroid.show('Gagal melakukan registrasi', ToastAndroid.SHORT);
       });
   };
   return (

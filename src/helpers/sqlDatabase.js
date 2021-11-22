@@ -10,7 +10,7 @@ export const getItem = () => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
-        `Select * from items`,
+        `Select * from user`,
         [],
         (tx, result) => {
           const rows = result.rows;
@@ -18,6 +18,7 @@ export const getItem = () => {
           for (let i = 0; i < rows.length; i++) {
             data.push(rows.item(i));
           }
+          console.log(data);
           resolve(data);
         },
         function (tx, err) {
@@ -40,6 +41,27 @@ export const registerUser = data => {
         `insert into user (username, password, nama_toko) values (?,?,?)`,
         [data.username, data.password, data.nama_toko],
         (tx, result) => {
+          console.log('berhasil insert');
+          console.log(result);
+          resolve();
+        },
+        function (tx, err) {
+          reject();
+          console.log('gagal get data');
+        },
+      );
+    });
+  });
+};
+
+export const Login = data => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        `select * from user where username = ?`,
+        [data.username],
+        (tx, result) => {
+          // bcrypt.compareSync("B4c0/\/", hash);
           console.log('berhasil insert');
           console.log(result);
           resolve();

@@ -19,6 +19,9 @@ import Styles from './styles';
 
 const Login = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  // useEffect(() => {
+  //   getItem();
+  // }, []);
   return (
     <ScrollView
       style={Styles.container}
