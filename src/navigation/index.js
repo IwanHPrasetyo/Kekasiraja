@@ -6,8 +6,9 @@ import {colors, icon} from '../theme';
 
 import LoginScreen from '../screens/Login';
 import DashboardScreen from '../screens/Dashboard';
-import RiwayatTransaksiScreen from '../screens/RiwayatTransaksi';
 import MasterProductScreen from '../screens/MasterProduct';
+import RiwayatTransaksiScreen from '../screens/RiwayatTransaksi';
+import DaftarProductScreen from '../screens/DaftarProduct';
 
 const MainStack = createNativeStackNavigator();
 const SubStack = createNativeStackNavigator();
@@ -53,6 +54,7 @@ const MainStackScreen = () => {
       <SubStack.Screen name="Login" component={LoginScreen} />
       <SubStack.Screen name="MainTab" component={TabMain} />
       <SubStack.Screen name="MasterProduct" component={MasterProductScreen} />
+      <SubStack.Screen name="DaftarProduct" component={DaftarProductScreen} />
     </SubStack.Navigator>
   );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
 import {icon} from '../../theme';
 import Styles from './styles';
 
-const ListPesanan = ({}) => {
+const ListPesanan = ({setModalVisible}) => {
   return (
-    <View style={Styles.container}>
+    <Pressable onPress={() => setModalVisible(true)} style={Styles.container}>
       <View
         style={{
           flex: 1,
@@ -37,7 +37,7 @@ const ListPesanan = ({}) => {
           name="clipboard-outline"
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 

@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Styles from './styles';
 import {View, Text, ScrollView, Pressable} from 'react-native';
 import {icon} from '../../theme';
 import {time} from '../../utils';
 import ListPesanan from '../../components/ListPesanan';
+import ModalPesanan from '../../components/ModalPesanan';
 
 const Dashboard = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={Styles.container}>
+      <ModalPesanan
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
       <View style={Styles.viewHeader}>
         <View style={Styles.viewTitleShop}>
           <icon.Entypo style={Styles.iconShope} name="shop" />
           <Text style={Styles.fontUser}>Kekasir Cafe</Text>
           <Text style={Styles.fontTime}>{time.time1}</Text>
+          <icon.FontAwesome
+            onPress={() => navigation.navigate('Login')}
+            style={Styles.iconShope}
+            name="power-off"
+          />
         </View>
         <View style={Styles.cardIncome}>
           <View style={Styles.subHeader}>
@@ -46,7 +57,11 @@ const Dashboard = ({navigation}) => {
           <icon.MaterialIcons style={Styles.iconButton} name="food-bank" />
           <Text style={Styles.fontTitle2}>Item Tersedia</Text>
         </Pressable>
-        <Pressable style={Styles.buttonPesan}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('DaftarProduct');
+          }}
+          style={Styles.buttonPesan}>
           <icon.FontAwesome5 style={Styles.iconButton} name="cash-register" />
           <Text style={Styles.fontTitle2}>Pemesanan</Text>
         </Pressable>
@@ -54,9 +69,9 @@ const Dashboard = ({navigation}) => {
       <View style={Styles.viewFooter}>
         <Text style={Styles.fontTitle}>Pesanan Dalam Proses</Text>
         <ScrollView>
-          <ListPesanan />
-          <ListPesanan />
-          <ListPesanan />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
+          <ListPesanan setModalVisible={setModalVisible} />
         </ScrollView>
       </View>
     </View>
