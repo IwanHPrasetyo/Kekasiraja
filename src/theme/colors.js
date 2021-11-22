@@ -5,4 +5,5 @@ export const colors = {
   fontSub1: '#a4b0be',
   yellowMain: '#ffa502',
   greenSub1: '#C6DABF',
+  grey: '#7f8c8d',
 };

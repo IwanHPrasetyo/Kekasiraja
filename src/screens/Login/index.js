@@ -44,7 +44,7 @@ const Login = ({navigation}) => {
       <View style={Styles.viewFooter}>
         <Pressable
           onPress={() => {
-            navigation.navigate('Dashboard');
+            navigation.navigate('MainTab');
           }}
           style={Styles.buttonLogin}>
           <Text style={Styles.fontLogin}>Login</Text>

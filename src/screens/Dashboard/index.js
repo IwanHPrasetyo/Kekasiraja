@@ -2,12 +2,18 @@ import React from 'react';
 import Styles from './styles';
 import {View, Text, ScrollView, Pressable} from 'react-native';
 import {icon} from '../../theme';
+import {time} from '../../utils';
 import ListPesanan from '../../components/ListPesanan';
 
 const Dashboard = ({navigation}) => {
   return (
     <View style={Styles.container}>
       <View style={Styles.viewHeader}>
+        <View style={Styles.viewTitleShop}>
+          <icon.Entypo style={Styles.iconShope} name="shop" />
+          <Text style={Styles.fontUser}>Kekasir Cafe</Text>
+          <Text style={Styles.fontTime}>{time.time1}</Text>
+        </View>
         <View style={Styles.cardIncome}>
           <View style={Styles.subHeader}>
             <View style={Styles.subCardHeaderA}>
@@ -31,50 +37,17 @@ const Dashboard = ({navigation}) => {
           </View>
         </View>
       </View>
-      <View
-        style={{
-          flex: 1.4,
-          justifyContent: 'center',
-          backgroundColor: '#fff',
-          paddingHorizontal: 10,
-          flexDirection: 'row',
-        }}>
+      <View style={Styles.viewMenu}>
         <Pressable
-          style={{
-            marginTop: '25%',
-            height: '40%',
-            width: '40%',
-            marginRight: '5%',
-            borderRadius: 10,
-            borderColor: '#ffa502',
-            borderWidth: 1,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <icon.MaterialIcons
-            style={{fontSize: 40, color: '#ffa502'}}
-            name="food-bank"
-          />
+          onPress={() => {
+            navigation.navigate('MasterProduct');
+          }}
+          style={Styles.buttonItem}>
+          <icon.MaterialIcons style={Styles.iconButton} name="food-bank" />
           <Text style={Styles.fontTitle2}>Item Tersedia</Text>
         </Pressable>
-        <Pressable
-          style={{
-            marginTop: '25%',
-            height: '40%',
-            width: '40%',
-            marginLeft: '5%',
-            borderRadius: 10,
-            borderColor: '#ffa502',
-            borderWidth: 1,
-            backgroundColor: '#fff',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <icon.FontAwesome5
-            style={{fontSize: 40, color: '#ffa502'}}
-            name="cash-register"
-          />
+        <Pressable style={Styles.buttonPesan}>
+          <icon.FontAwesome5 style={Styles.iconButton} name="cash-register" />
           <Text style={Styles.fontTitle2}>Pemesanan</Text>
         </Pressable>
       </View>
