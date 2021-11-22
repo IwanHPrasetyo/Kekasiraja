@@ -12,6 +12,7 @@ import {
   Button,
   Pressable,
 } from 'react-native';
+import {getItem} from '../../helpers/sqlDatabase';
 import {colors} from '../../theme';
 import Styles from './styles';
 
