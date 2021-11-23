@@ -92,3 +92,23 @@ export const loginuser = data => {
     });
   });
 };
+
+export const addItem = data => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        `insert into items (nama, harga, kategori) values (?,?,?)`,
+        [data.nama, data.harga, data.kategori],
+        (tx, result) => {
+          const rows = result.rows;
+          resolve();
+          console.log('berhasil insert');
+        },
+        function (tx, err) {
+          reject();
+          console.log('gagal get data');
+        },
+      );
+    });
+  });
+};

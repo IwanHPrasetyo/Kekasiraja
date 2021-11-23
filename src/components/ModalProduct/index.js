@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -12,17 +12,20 @@ import {
 import {Formik} from 'formik';
 import {colors, icon} from '../../theme';
 import Styles from './styles';
-import {registerUser} from '../../helpers/sqlDatabase';
+import {addItem} from '../../helpers/sqlDatabase';
+import {Picker} from '@react-native-picker/picker';
 
-const ModalRegister = ({modalVisible, setModalVisible}) => {
-  const register = value => {
-    registerUser(value)
-      .then(() => {
+const ModalProduct = ({modalVisible, setModalVisible}) => {
+  const onItem = value => {
+    console.log('data valuee');
+    console.log(value);
+    addItem(value)
+      .then(result => {
         setModalVisible(!modalVisible);
-        ToastAndroid.show('registrasi berhasil', ToastAndroid.SHORT);
+        ToastAndroid.show('Tambah item berhasil', ToastAndroid.SHORT);
       })
       .catch(err => {
-        ToastAndroid.show('Gagal melakukan registrasi', ToastAndroid.SHORT);
+        ToastAndroid.show('Tambah item gagal', ToastAndroid.SHORT);
       });
   };
   return (
@@ -35,47 +38,55 @@ const ModalRegister = ({modalVisible, setModalVisible}) => {
               style={Styles.closeButton}>
               <icon.FontAwesome style={Styles.iconHeader} name="close" />
             </Pressable>
-            <icon.FontAwesome5 style={Styles.iconHeader} name="user" />
+            <icon.Ionicons style={Styles.iconHeader} name="fast-food" />
             <Text style={Styles.fontTitle} numberOfLines={1}>
-              Daftar Toko
+              Tambah Product
             </Text>
           </View>
           <Formik
             initialValues={{
-              nama_toko: '',
-              username: '',
-              password: '',
+              nama: '',
+              harga: '',
+              qty: '',
+              kategori: 'Makanan',
             }}
-            onSubmit={values => register(values)}>
+            onSubmit={values => onItem(values)}>
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <>
                 <View style={Styles.viewOrder}>
                   <TextInput
-                    onChangeText={handleChange('nama_toko')}
+                    onChangeText={handleChange('nama')}
                     style={Styles.inputText}
-                    placeholder="Nama Toko"
-                    value={values.nama_toko}
+                    placeholder="Nam Product"
+                    value={values.nama}
                     placeholderTextColor={colors.fontSub1}
                   />
                   <TextInput
-                    onChangeText={handleChange('username')}
+                    keyboardType={'number-pad'}
+                    onChangeText={handleChange('harga')}
                     style={Styles.inputText}
-                    placeholder="Username"
-                    value={values.username}
+                    placeholder="Harga"
+                    value={values.harga}
                     placeholderTextColor={colors.fontSub1}
                   />
+                  <Picker
+                    selectedValue={values.kategori}
+                    onValueChange={handleChange('kategori')}>
+                    <Picker.Item label="Makanan" value="Makanan" />
+                    <Picker.Item label="Minuman" value="Minuman" />
+                  </Picker>
                   <TextInput
-                    onChangeText={handleChange('password')}
+                    onChangeText={handleChange('qty')}
                     style={Styles.inputText}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    value={values.password}
+                    placeholder="Qty"
+                    keyboardType={'number-pad'}
+                    value={values.qty}
                     placeholderTextColor={colors.fontSub1}
                   />
                 </View>
                 <View style={Styles.viewFooter}>
                   <Pressable onPress={handleSubmit} style={Styles.daftar}>
-                    <Text style={Styles.fontTitle}>Daftar</Text>
+                    <Text style={Styles.fontTitle}>Simpan</Text>
                   </Pressable>
                 </View>
               </>
@@ -87,4 +98,4 @@ const ModalRegister = ({modalVisible, setModalVisible}) => {
   );
 };
 
-export default ModalRegister;
+export default ModalProduct;

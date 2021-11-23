@@ -4,14 +4,16 @@ import {colors, icon} from '../../theme';
 import ListProduct from '../../components/ListProduct';
 import Styles from './styles';
 import {getItem} from '../../helpers/sqlDatabase';
+import ModalProduct from '../../components/ModalProduct';
 
 const MasterProduct = ({navigation}) => {
   const [kategori, setKetegori] = useState(true);
   const [item, setItem] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     onItem();
-  }, [kategori]);
+  }, [kategori, modalVisible]);
 
   const onItem = () => {
     getItem()
@@ -27,6 +29,10 @@ const MasterProduct = ({navigation}) => {
 
   return (
     <View style={Styles.container}>
+      <ModalProduct
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
       <View style={Styles.viewHeader}>
         <View
           style={{flex: 1, justifyContent: 'center', alignItems: 'flex-start'}}>
@@ -41,7 +47,11 @@ const MasterProduct = ({navigation}) => {
         </View>
         <View
           style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-          <icon.Feather style={{fontSize: 30, color: '#fff'}} name="plus" />
+          <icon.Feather
+            onPress={() => setModalVisible(true)}
+            style={{fontSize: 30, color: '#fff'}}
+            name="plus"
+          />
         </View>
       </View>
       <View style={Styles.viewMenu}>
@@ -86,7 +96,7 @@ const MasterProduct = ({navigation}) => {
           renderItem={data => {
             return <ListProduct data={data} />;
           }}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.nama}
         />
       </View>
     </View>
