@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
+import {Pressable, ScrollView, Text, View, FlatList} from 'react-native';
 import {colors, icon} from '../../theme';
 import ListProduct from '../../components/ListProduct';
 import Styles from './styles';
@@ -10,17 +10,20 @@ const DaftarProduct = ({navigation}) => {
   const [item, setItem] = useState([]);
 
   useEffect(() => {
-    console.log('jaaalnnn');
+    onItem();
+  }, [kategori]);
+
+  const onItem = () => {
     getItem()
       .then(result => {
-        console.log('iteeem');
-        console.log(result);
-        setItem(result);
+        let filValue = kategori ? 'Makanan' : 'Minuman';
+        let fil = result.filter(data => data.kategori == filValue);
+        setItem(fil);
       })
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  };
 
   return (
     <View style={Styles.container}>
@@ -82,14 +85,13 @@ const DaftarProduct = ({navigation}) => {
         </Pressable>
       </View>
       <View style={{flex: 10}}>
-        <ScrollView>
-          <ListProduct />
-          <ListProduct />
-          <ListProduct />
-          <ListProduct />
-          <ListProduct />
-          <ListProduct />
-        </ScrollView>
+        <FlatList
+          data={item}
+          renderItem={data => {
+            return <ListProduct data={data} />;
+          }}
+          keyExtractor={item => item.id}
+        />
       </View>
     </View>
   );
