@@ -9,7 +9,7 @@
 ## Features
 - [x] Register user
 - [x] Login user
-- [ ] Log out
+- [x] Log out
 - [x] Home screen
 - [x] Add menu
 - [ ] Update menu
@@ -17,19 +17,25 @@
 - [ ] History
 
 - __Login__
-![image](https://user-images.githubusercontent.com/51011550/66734754-82477a80-ee8e-11e9-8e70-ccd506a66675.png)
+ 
+![Screenshot_20211123-115148](https://user-images.githubusercontent.com/55027286/142973365-03cacb12-6a23-4bf0-b9ff-32384ef5dc5f.png)
+
 - __Home screen__
 
-![image](https://user-images.githubusercontent.com/51011550/66734949-347f4200-ee8f-11e9-8b44-fecc447f4e24.png)
-- __Add menu__
+![Screenshot_20211123-115216](https://user-images.githubusercontent.com/55027286/142973416-c859136c-45c8-433d-af09-5e5d194f9d16.png)
 
-![image](https://user-images.githubusercontent.com/51011550/66735163-cedf8580-ee8f-11e9-8ddb-9ec7046ff452.png)
-- __Edit ang delete menu__
+- __Daftar Product__
 
-![image](https://user-images.githubusercontent.com/51011550/66735864-c1c39600-ee91-11e9-9c97-6777273b5655.png)
+![Screenshot_20211123-115245](https://user-images.githubusercontent.com/55027286/142973579-498beb1e-7be8-4db9-9ff5-3d582a9aca11.png)
+
+- __Daftar Menu__
+- 
+![Screenshot_20211123-115250](https://user-images.githubusercontent.com/55027286/142973717-9cea1cda-33ef-4ca8-be16-d2ea88ae78d8.png)
+
 - __Checkout__
 
-![image](https://user-images.githubusercontent.com/51011550/66734976-4a8d0280-ee8f-11e9-9f5e-3dfe6ec569b2.png)
-- __History__
+![Screenshot_20211123-115253](https://user-images.githubusercontent.com/55027286/142973764-43ec1f11-3213-4b4e-89c5-684921ca295a.png)
 
-![Tangkapan Layar 2019-10-14 pada 14 39 28-fullpage](https://user-images.githubusercontent.com/51011550/66735471-a1dfa280-ee90-11e9-9f9b-ece37e9636cb.png)
+- __Riwayat Transaksi__
+
+![Screenshot_20211123-115302](https://user-images.githubusercontent.com/55027286/142973823-e7fbcefc-b563-4bc3-9b8e-d2143abef04f.png)
