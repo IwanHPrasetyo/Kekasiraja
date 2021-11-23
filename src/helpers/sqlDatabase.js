@@ -42,7 +42,8 @@ export const registerUser = data => {
         [data.username, data.password, data.nama_toko],
         (tx, result) => {
           console.log('berhasil insert');
-          console.log(result);
+          const rows = result.rows;
+          console.log(rows);
           resolve();
         },
         function (tx, err) {
@@ -54,21 +55,24 @@ export const registerUser = data => {
   });
 };
 
-export const Login = data => {
+export const loginuser = data => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
         `select * from user where username = ?`,
         [data.username],
         (tx, result) => {
-          // bcrypt.compareSync("B4c0/\/", hash);
-          console.log('berhasil insert');
-          console.log(result);
-          resolve();
+          const rows = result.rows;
+          if (rows.length >= 1) {
+            let pass = result.rows.item(0).password;
+            let veryf = bcrypt.compareSync(data.password, pass);
+            veryf == true ? resolve() : reject();
+          } else {
+            reject();
+          }
         },
         function (tx, err) {
           reject();
-          console.log('gagal get data');
         },
       );
     });
