@@ -4,6 +4,7 @@
 ## Requirement
 - React Native
 - Sqlite
+- Async storage
 
 ## Features
 - [x] Register user
