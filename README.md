@@ -6,11 +6,11 @@
 - Sqlite
 
 ## Features
-- [v] Register user
-- [v] Login user
+- [x] Register user
+- [x] Login user
 - [ ] Log out
-- [v] Home screen
-- [v] Add menu
+- [x] Home screen
+- [x] Add menu
 - [ ] Update menu
 - [ ] Delete menu
 - [ ] History
