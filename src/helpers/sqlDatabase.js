@@ -1,5 +1,6 @@
 import SQLite from 'react-native-sqlite-storage';
 import bcrypt from 'react-native-bcrypt';
+import {setLogin} from './asyncStorage';
 
 const db = SQLite.openDatabase({
   name: 'kekasir.db',
@@ -10,7 +11,7 @@ export const getItem = () => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
-        `Select * from user`,
+        `Select * from items`,
         [],
         (tx, result) => {
           const rows = result.rows;
@@ -18,10 +19,10 @@ export const getItem = () => {
           for (let i = 0; i < rows.length; i++) {
             data.push(rows.item(i));
           }
-          console.log(data);
           resolve(data);
         },
         function (tx, err) {
+          console.log(tx);
           reject();
           console.log('gagal get data');
         },
@@ -66,7 +67,20 @@ export const loginuser = data => {
           if (rows.length >= 1) {
             let pass = result.rows.item(0).password;
             let veryf = bcrypt.compareSync(data.password, pass);
-            veryf == true ? resolve() : reject();
+            if (veryf == true) {
+              setLogin(result.rows.item(0))
+                .then(() => {
+                  console.log('berhasil login');
+                  resolve();
+                })
+                .catch(err => {
+                  console.log('gagal login');
+                  console.log(err);
+                  reject();
+                });
+            } else {
+              reject();
+            }
           } else {
             reject();
           }

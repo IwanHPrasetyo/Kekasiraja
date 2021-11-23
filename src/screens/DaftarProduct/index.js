@@ -1,11 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Pressable, ScrollView, Text, View} from 'react-native';
 import {colors, icon} from '../../theme';
 import ListProduct from '../../components/ListProduct';
 import Styles from './styles';
+import {getItem} from '../../helpers/sqlDatabase';
 
 const DaftarProduct = ({navigation}) => {
   const [kategori, setKetegori] = useState(true);
+  const [item, setItem] = useState([]);
+
+  useEffect(() => {
+    console.log('jaaalnnn');
+    getItem()
+      .then(result => {
+        console.log('iteeem');
+        console.log(result);
+        setItem(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <View style={Styles.container}>
       <View style={Styles.viewHeader}>

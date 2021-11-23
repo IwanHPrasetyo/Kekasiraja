@@ -26,7 +26,7 @@ const Login = ({navigation}) => {
     loginuser(data)
       .then(() => {
         ToastAndroid.show('Berhasil Login', ToastAndroid.SHORT);
-        // navigation.navigate('MainTab');
+        navigation.navigate('MainTab');
       })
       .catch(() => {
         ToastAndroid.show('Gagal Login', ToastAndroid.SHORT);

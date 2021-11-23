@@ -3,7 +3,9 @@ import {Pressable, Text, View} from 'react-native';
 import {icon} from '../../theme';
 import Styles from './styles';
 
-const ListProduct = () => {
+const ListProduct = (data, kategori) => {
+  let item = data.data.item;
+
   return (
     <Pressable onPress={() => console.log('pilih')} style={Styles.container}>
       <View
@@ -23,8 +25,8 @@ const ListProduct = () => {
           justifyContent: 'center',
           padding: 10,
         }}>
-        <Text style={Styles.fontTitle}>Nama Item</Text>
-        <Text style={Styles.fontCount}>Rp. 200.000</Text>
+        <Text style={Styles.fontTitle}>{item.nama}</Text>
+        <Text style={Styles.fontCount}>{item.harga + 'K'}</Text>
       </View>
       <View
         style={{
@@ -33,7 +35,7 @@ const ListProduct = () => {
           alignItems: 'center',
         }}>
         <Text style={Styles.fontTitle}>QTY</Text>
-        <Text style={Styles.fontCount}>200</Text>
+        <Text style={Styles.fontCount}>{item.qty}</Text>
       </View>
     </Pressable>
   );

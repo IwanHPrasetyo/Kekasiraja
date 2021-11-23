@@ -1,13 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Styles from './styles';
 import {View, Text, ScrollView, Pressable} from 'react-native';
 import {icon} from '../../theme';
 import {time} from '../../utils';
 import ListPesanan from '../../components/ListPesanan';
 import ModalPesanan from '../../components/ModalPesanan';
+import {getLogin} from '../../helpers/asyncStorage';
 
 const Dashboard = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [user, setUser] = useState('');
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
+    getLogin()
+      .then(result => {
+        setUser(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   return (
     <View style={Styles.container}>
       <ModalPesanan
@@ -17,7 +33,7 @@ const Dashboard = ({navigation}) => {
       <View style={Styles.viewHeader}>
         <View style={Styles.viewTitleShop}>
           <icon.Entypo style={Styles.iconShope} name="shop" />
-          <Text style={Styles.fontUser}>Kekasir Cafe</Text>
+          <Text style={Styles.fontUser}>{user.nama_toko}</Text>
           <Text style={Styles.fontTime}>{time.time1}</Text>
           <icon.FontAwesome
             onPress={() => navigation.navigate('Login')}
